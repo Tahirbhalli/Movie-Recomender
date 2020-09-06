@@ -5,4 +5,6 @@ class User < ApplicationRecord
     validates :password, presence: true, length: { minimum: 8, maximum: 50 }
     has_many :liked_movies
     has_many :movies, through: :liked_movies
+    has_many :genersandusers
+    has_many :genersofmovies, through: :genersandusers
 end

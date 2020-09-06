@@ -4,4 +4,5 @@ class Movie < ApplicationRecord
     has_many :users, through: :liked_movies
     has_many :genersandmovies
     has_many :genersofmovies, through: :genersandmovies
+    has_many :movie_images
 end
