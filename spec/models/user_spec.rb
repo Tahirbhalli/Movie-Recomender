@@ -21,4 +21,5 @@ RSpec.describe User, type: :model do
     a.save
     expect(User.exists?(email: 'abv')).to eq(false)
   end
+  
 end
