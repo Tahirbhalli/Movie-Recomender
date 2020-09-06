@@ -1,4 +1,4 @@
 class Genersanduser < ApplicationRecord
-    belongs_to :user
-    belongs_to :genersofmovie
+  belongs_to :user
+  belongs_to :genersofmovie
 end

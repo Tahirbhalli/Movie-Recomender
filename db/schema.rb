@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_06_195829) do
+ActiveRecord::Schema.define(version: 2020_09_06_202925) do
 
   create_table "genersandmovies", force: :cascade do |t|
     t.integer "movie_id"
@@ -62,6 +62,32 @@ ActiveRecord::Schema.define(version: 2020_09_06_195829) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "starandmovies", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "star_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["movie_id"], name: "index_starandmovies_on_movie_id"
+    t.index ["star_id"], name: "index_starandmovies_on_star_id"
+  end
+
+  create_table "starandusers", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "star_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["star_id"], name: "index_starandusers_on_star_id"
+    t.index ["user_id"], name: "index_starandusers_on_user_id"
+  end
+
+  create_table "stars", force: :cascade do |t|
+    t.string "name"
+    t.string "pic_url"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -77,4 +103,8 @@ ActiveRecord::Schema.define(version: 2020_09_06_195829) do
   add_foreign_key "liked_movies", "movies"
   add_foreign_key "liked_movies", "users"
   add_foreign_key "movie_images", "movies"
+  add_foreign_key "starandmovies", "movies"
+  add_foreign_key "starandmovies", "stars"
+  add_foreign_key "starandusers", "stars"
+  add_foreign_key "starandusers", "users"
 end
