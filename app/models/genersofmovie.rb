@@ -3,5 +3,5 @@ class Genersofmovie < ApplicationRecord
   has_many :genersandmovies
   has_many :movies, through: :genersandmovies
   has_many :genersandusers
-  has_many :users, through: :genersandusers
+  has_many :users, through: :genersandusers, dependent: :delete_all
 end
