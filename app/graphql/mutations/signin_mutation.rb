@@ -1,17 +1,16 @@
 module Mutations
   class SigninMutation < BaseMutation
-
     argument :email, String, required: true
     argument :password, String, required: true
 
-    type Types::UserType
+    type String
 
-    def resolve(email:,password:)
+    def resolve(email:, password:)
       @user = User.find_by(email: email)
       if @user.authenticate(password)
-        @user
+        encode_tokken(@user.id)
       else
-        nil
+        encode_tokken(nil)
       end
     end
   end

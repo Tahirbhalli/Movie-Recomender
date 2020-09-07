@@ -8,11 +8,7 @@ module Mutations
 
     def resolve(name:, email:, password:)
       @user = User.new(name: name, email: email, password: password)
-      if @user.save
-        @user
-      else
-        nil
-      end
+      @user if @user.save
     end
   end
 end
