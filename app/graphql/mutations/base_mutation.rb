@@ -1,4 +1,3 @@
-require 'jwt'
 module Mutations
   class BaseMutation < GraphQL::Schema::RelayClassicMutation
     include Auth

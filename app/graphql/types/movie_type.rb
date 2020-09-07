@@ -5,6 +5,5 @@ module Types
     field :poster_url, String, null: true
     field :description, String, null: true
     field :director, String, null: true
-    
   end
 end

@@ -4,6 +4,5 @@ module Types
     field :name, String, null: true
     field :pic_url, String, null: true
     field :description, String, null: true
-
   end
 end
