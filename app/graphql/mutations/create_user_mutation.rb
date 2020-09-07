@@ -1,6 +1,5 @@
 module Mutations
   class CreateUserMutation < BaseMutation
-    # field :usercreate, Types::UserType, null: true
     argument :name, String, required: true
     argument :email, String, required: true
     argument :password, String, required: true
@@ -12,7 +11,7 @@ module Mutations
       if @user.save
         @user
       else
-        current_user
+        nil
       end
     end
   end
