@@ -1,43 +1,30 @@
 module Types
   class QueryType < Types::BaseObject
     include Auth
-    field :user, Types::UserType, null: false, description: 'get the user by id'
-    field :allmovies, [Types::MovieType], null: false, description: 'get all the movies'
-    field :movie, Types::MovieType, null: false, description: 'get specfic Movie' do
-      argument :id, Integer, required: true
+
+    field :allgeners, [Types::GenersofmovieType], null: false, description: 'get all the list of Generes'
+    def allgeners
+      Genersofmovie.all
     end
-    field :allstars, [Types::StarType], null: false, description: 'get all the list of stars'
-    field :star, Types::StarType, null: false, description: 'get specfic star' do
-      argument :id, Integer, required: true
-    end
-    field :likedmovies, [Types::MovieType], null: false, description: 'get all the list of Liked movies of the User' do
-      argument :tokken, String, required: true
-    end
-    field :likedactors, [Types::StarType], null: false, description: 'get all the list of Liked Actors of the User' do
-      argument :tokken, String, required: true
-    end
-    field :likedgeners, [Types::StarType], null: false, description: 'get all the list of Liked geners of the User' do
-      argument :tokken, String, required: true
-    end
-    field :like_a_geners, Boolean, null: false, description: 'User like a geners' do
+    field :dislike_a_geners, Boolean, null: false, description: 'User unfollow a geners' do
       argument :tokken, String, required: true
       argument :geners_id, Integer, required: true
     end
-    field :unfollow_a_geners, Boolean, null: false, description: 'User unfollow a geners' do
-      argument :tokken, String, required: true
-      argument :geners_id, Integer, required: true
-    end
-    def unfollow_a_geners(tokken:, geners_id:)
+    def dislike_a_geners(tokken:, geners_id:)
       userid = decode_tokken(tokken)
       @user = User.find(userid['userid'])
-      @g = Genersanduser.find_by(user_id: @user.id, genersofmovie_id: geners_id)
-      if Genersanduser.delete(@g.id)
+      @g = Genersanduser.where(user_id: @user.id, genersofmovie_id: geners_id)
+      if @g.exists?
+        Genersanduser.delete(@g.ids)
         true
       else
         false
       end
     end
-
+    field :like_a_geners, Boolean, null: false, description: 'User like a geners' do
+      argument :tokken, String, required: true
+      argument :geners_id, Integer, required: true
+    end
     def like_a_geners(tokken:, geners_id:)
       userid = decode_tokken(tokken)
       @user = User.find(userid['userid'])
@@ -47,41 +34,137 @@ module Types
         false
       end
     end
-
+    field :like_a_actor, Boolean, null: false, description: 'User like a star' do
+      argument :tokken, String, required: true
+      argument :actor_id, Integer, required: true
+    end
+    def like_a_actor(tokken:, actor_id:)
+      userid = decode_tokken(tokken)
+      @user = User.find(userid['userid'])
+      if @user.starandusers.create(star_id: actor_id)
+        true
+      else
+        false
+      end
+    end
+    field :dislike_a_star, Boolean, null: false, description: 'User unfollow a star' do
+      argument :tokken, String, required: true
+      argument :star_id, Integer, required: true
+    end
+    def dislike_a_star(tokken:, star_id:)
+      userid = decode_tokken(tokken)
+      @user = User.find(userid['userid'])
+      @g = Staranduser.where(user_id: @user.id, star_id: star_id)
+      if @g.exists?
+        Staranduser.delete(@g.ids)
+        true
+      else
+        false
+      end
+    end
+    field :likedgeners, [Types::GenersofmovieType], null: false,
+                                                    description: 'get all the list of Liked geners of the User' do
+      argument :tokken, String, required: true
+    end
     def likedgeners(tokken:)
       userid = decode_tokken(tokken)
-      @user = User.find(userid['userid'])
-      @user.genersofmovies
+      if User.where(id: userid['userid']).exists?
+        @user = User.find(userid['userid'])
+        @user.genersofmovies
+      else
+        []
+      end
     end
-
-    def likedactors(tokken:)
+    field :likedActors, [Types::StarType], null: false, description: 'get all the list of Liked Actors of the User' do
+      argument :tokken, String, required: true
+    end
+    def likedActors(tokken:)
+      userid = decode_tokken(tokken)
+      if User.where(id: userid['userid']).exists?
+        @user = User.find(userid['userid'])
+        @user.stars
+      else
+        []
+      end
+    end
+    field :dislike_a_movie, Boolean, null: false, description: 'User unfollow a geners' do
+      argument :tokken, String, required: true
+      argument :movie_id, Integer, required: true
+    end
+    def dislike_a_movie(tokken:, movie_id:)
       userid = decode_tokken(tokken)
       @user = User.find(userid['userid'])
-      @user.stars
+      @g = LikedMovie.where(user_id: @user.id, movie_id: movie_id)
+      if @g.exists?
+        LikedMovie.delete(@g.ids)
+        true
+      else
+        false
+      end
     end
-
+    field :like_a_movie, Boolean, null: false, description: 'User like a movie' do
+      argument :tokken, String, required: true
+      argument :movie_id, Integer, required: true
+    end
+    def like_a_movie(tokken:, movie_id:)
+      userid = decode_tokken(tokken)
+      @user = User.find(userid['userid'])
+      if @user.liked_movies.create(movie_id: movie_id)
+        true
+      else
+        false
+      end
+    end
+    field :likedmovies, [Types::MovieType], null: false, description: 'get all the list of Liked movies of the User' do
+      argument :tokken, String, required: true
+    end
     def likedmovies(tokken:)
       userid = decode_tokken(tokken)
-      @user = User.find(userid['userid'])
-      @user.movies
+      if User.where(id: userid['userid']).exists?
+        @user = User.find(userid['userid'])
+        @user.movies
+      else
+        []
+      end
     end
 
+    field :movie, Types::MovieType, null: false, description: 'get specfic Movie' do
+      argument :id, Integer, required: true
+    end
     def movie(id:)
-      Movie.find(id)
+      if Movie.where(id: id).exists?
+        Movie.find(id)
+      else
+        {
+          id: 0
+        }
+      end
     end
 
+    field :star, Types::StarType, null: false, description: 'get specfic star' do
+      argument :id, Integer, required: true
+    end
     def star(id:)
-      Star.find(id)
+      if Star.where(id: id).exists?
+        Star.find(id)
+      else
+        {
+          id: 0
+        }
+      end
     end
 
+    field :user, Types::UserType, null: false, description: 'get the user by id'
     def user
       User.find(1)
     end
 
+    field :allmovies, [Types::MovieType], null: false, description: 'get all the movies'
     def allmovies
       Movie.all
     end
 
+    field :allstars, [Types::StarType], null: false, description: 'get all the list of stars'
     def allstars
       Star.all
     end

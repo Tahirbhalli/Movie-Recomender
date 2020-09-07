@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_06_202925) do
+ActiveRecord::Schema.define(version: 2020_09_07_195040) do
+
+  create_table "directors", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "image"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "genersandmovies", force: :cascade do |t|
     t.integer "movie_id"
@@ -57,9 +65,10 @@ ActiveRecord::Schema.define(version: 2020_09_06_202925) do
     t.string "name"
     t.string "poster_url"
     t.text "description", default: "N/A"
-    t.string "director", default: "N/A"
+    t.integer "director_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["director_id"], name: "index_movies_on_director_id"
   end
 
   create_table "starandmovies", force: :cascade do |t|
@@ -103,6 +112,7 @@ ActiveRecord::Schema.define(version: 2020_09_06_202925) do
   add_foreign_key "liked_movies", "movies"
   add_foreign_key "liked_movies", "users"
   add_foreign_key "movie_images", "movies"
+  add_foreign_key "movies", "directors"
   add_foreign_key "starandmovies", "movies"
   add_foreign_key "starandmovies", "stars"
   add_foreign_key "starandusers", "stars"

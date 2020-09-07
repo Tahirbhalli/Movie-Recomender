@@ -7,4 +7,5 @@ class Movie < ApplicationRecord
   has_many :movie_images
   has_many :starandmovies
   has_many :stars, through: :starandmovies
+  belongs_to :director
 end

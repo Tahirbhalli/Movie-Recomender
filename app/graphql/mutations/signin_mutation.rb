@@ -10,7 +10,7 @@ module Mutations
       if @user.authenticate(password)
         encode_tokken({ userid: @user.id })
       else
-        encode_tokken(userid: 0)
+        ''
       end
     end
   end
