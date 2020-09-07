@@ -1,5 +1,5 @@
 class Movie < ApplicationRecord
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: { case_sensitive: true }
   has_many :liked_movies
   has_many :users, through: :liked_movies
   has_many :genersandmovies
