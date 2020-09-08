@@ -5,7 +5,7 @@ RSpec.describe Genersandmovie, type: :model do
     a = Genersofmovie.new(name: 'Action')
     a.save
     Director.create(name: 'dummy')
-    b = Movie.create(name: 'cast away',director_id: 1)
+    b = Movie.create(name: 'cast away', director_id: 1)
     b.save
   end
   it 'movie Generes type' do

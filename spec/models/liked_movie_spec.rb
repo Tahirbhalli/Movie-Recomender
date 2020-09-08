@@ -5,7 +5,7 @@ RSpec.describe LikedMovie, type: :model do
     a = User.new(name: 'gajksj', email: 'user@example.com', password: 'password1234')
     a.save
     Director.create(name: 'dummy')
-    b = Movie.create(name: 'cast away',director_id: 1)
+    b = Movie.create(name: 'cast away', director_id: 1)
     b.save
   end
   it 'user all Liked movie' do

@@ -12,6 +12,8 @@ module Types
     end
     def dislike_a_geners(tokken:, geners_id:)
       userid = decode_tokken(tokken)
+      return false unless User.where(id: userid['userid']).exists?
+
       @user = User.find(userid['userid'])
       @g = Genersanduser.where(user_id: @user.id, genersofmovie_id: geners_id)
       if @g.exists?
@@ -27,6 +29,8 @@ module Types
     end
     def like_a_geners(tokken:, geners_id:)
       userid = decode_tokken(tokken)
+      return false unless User.where(id: userid['userid']).exists?
+
       @user = User.find(userid['userid'])
       if @user.genersandusers.create(genersofmovie_id: geners_id)
         true
@@ -40,6 +44,8 @@ module Types
     end
     def like_a_actor(tokken:, actor_id:)
       userid = decode_tokken(tokken)
+      return false unless User.where(id: userid['userid']).exists?
+
       @user = User.find(userid['userid'])
       if @user.starandusers.create(star_id: actor_id)
         true
@@ -53,6 +59,8 @@ module Types
     end
     def dislike_a_star(tokken:, star_id:)
       userid = decode_tokken(tokken)
+      return false unless User.where(id: userid['userid']).exists?
+
       @user = User.find(userid['userid'])
       @g = Staranduser.where(user_id: @user.id, star_id: star_id)
       if @g.exists?
@@ -93,6 +101,8 @@ module Types
     end
     def dislike_a_movie(tokken:, movie_id:)
       userid = decode_tokken(tokken)
+      return false unless User.where(id: userid['userid']).exists?
+
       @user = User.find(userid['userid'])
       @g = LikedMovie.where(user_id: @user.id, movie_id: movie_id)
       if @g.exists?
@@ -108,6 +118,8 @@ module Types
     end
     def like_a_movie(tokken:, movie_id:)
       userid = decode_tokken(tokken)
+      return false unless User.where(id: userid['userid']).exists?
+
       @user = User.find(userid['userid'])
       if @user.liked_movies.create(movie_id: movie_id)
         true

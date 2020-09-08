@@ -52,8 +52,8 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'factory_bot_rails'
 gem 'graphiql-rails', '~> 1.7'
 gem 'graphql'
 gem 'jwt'
-gem 'factory_bot_rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
