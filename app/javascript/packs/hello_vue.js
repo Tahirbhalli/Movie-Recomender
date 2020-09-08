@@ -10,12 +10,28 @@ import App from '../app.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import vueRouter from 'vue-router'
+import Home from '../components/Home'
+import VueApollo from 'vue-apollo'
 
+Vue.use(VueApollo)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+Vue.use(vueRouter);
+const routes =[
+  {path: '/',component:Home},
+  //{path: '/Actor:id'}
+
+]
+const router = new vueRouter({
+  routes
+})
+
 
 document.addEventListener('DOMContentLoaded', () => {
+  
   const app = new Vue({
+    router: router,
     render: h => h(App)
   }).$mount()
   document.body.appendChild(app.$el)

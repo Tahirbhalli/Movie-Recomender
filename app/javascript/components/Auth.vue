@@ -2,7 +2,7 @@
 <div>
   <b-button v-b-modal.modal-1>Sign Up</b-button>
 
-  <b-modal id="modal-1" title="Join Movizzz" hide-footer="true">
+  <b-modal id="modal-1" title="Join Movizzz" hide-footer>
     <Signup v-if="this.togle"/>
     <Login v-else />
     <span v-on:click="changelink">{{this.link_title}}</span>

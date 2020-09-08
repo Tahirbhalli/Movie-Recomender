@@ -6,10 +6,13 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
+    "apollo-boost": "^0.4.9",
     "bootstrap": "^4.5.2",
     "bootstrap-vue": "^2.16.0",
+    "graphql": "^15.3.0",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.12",
+    "vue-apollo": "^3.0.4",
     "vue-loader": "^15.9.3",
     "vue-router": "^3.4.3",
     "vue-template-compiler": "^2.6.12"

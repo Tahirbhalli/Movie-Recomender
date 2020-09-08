@@ -27,7 +27,7 @@ export default {
     methods:{
         submitform(e){
             e.preventDefault();
-            console.log(this.formdata)
+            console.log(this.formdata);
         }
     },
     data(){

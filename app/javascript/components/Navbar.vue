@@ -43,4 +43,11 @@ export default {
   .img-fluid {
     height: 44px !important;
   }
+
+  @media screen and (max-width: 1230px) {
+    .d-none {
+      display: none !important;
+    }
+  }
+
 </style>
