@@ -6,6 +6,7 @@ module Types
                         description: 'Signup And get a Json Web Tokken'
     field :test_field, String, null: false,
                                description: 'An example field added by the generator'
+    field :reset_password, mutation: Mutations::ResetPasswordMutation,description: 'Reset existing password'
     def test_field
       'Hello World'
     end

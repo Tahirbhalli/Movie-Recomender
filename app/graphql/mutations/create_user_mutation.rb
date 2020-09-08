@@ -9,9 +9,9 @@ module Mutations
     def resolve(name:, email:, password:)
       @user = User.new(name: name, email: email, password: password)
       if @user.save
-        encode_tokken({userid: @user.id})
+        encode_tokken({ userid: @user.id })
       else
-        ""
+        ''
       end
     end
   end
