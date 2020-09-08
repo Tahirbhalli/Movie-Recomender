@@ -2,9 +2,10 @@
 <div>
   <b-button v-b-modal.modal-1>Sign Up</b-button>
 
-  <b-modal id="modal-1" title="Join Movizzz">
+  <b-modal id="modal-1" title="Join Movizzz" hide-footer="true">
     <Signup v-if="this.togle"/>
     <Login v-else />
+    <span v-on:click="changelink">{{this.link_title}}</span>
   </b-modal>
 </div>
 </template>
@@ -17,13 +18,23 @@ export default {
         Signup
     },
     methods:{
-        
+        changelink(){
+            this.togle = !this.togle;
+            this.togle ? this.link_title='Sign In' : this.link_title='Sign Up'
+        }
     },
     data(){
         return{
             togle: true,
-            title: 'Sign Up',
+            link_title: 'Sign In',
         }
     }
 }
 </script>
+<style scoped>
+  span {
+    cursor: pointer;
+    color: blue;
+    font-weight: bolder;
+  }
+</style>
