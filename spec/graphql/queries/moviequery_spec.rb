@@ -12,10 +12,10 @@ RSpec.describe 'movei queries', type: :request do
       expect(data).to eq('1')
     end
     it 'all movies list' do
-        post '/graphql',params: {query: 'query{allmovies{id}}'}
-        json = JSON.parse(response.body)
-        data=json['data']['allmovies']
-        expect(data.count).to eq(1) 
+      post '/graphql', params: { query: 'query{allmovies{id}}' }
+      json = JSON.parse(response.body)
+      data = json['data']['allmovies']
+      expect(data.count).to eq(1)
     end
   end
 end

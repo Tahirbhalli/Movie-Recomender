@@ -8,21 +8,31 @@
         <input type="search" class="form-control">
       </b-col>
       <b-col cols="2" class="mt-3 text-right">
-        <button class="btn">Login</button>
+        <Auth />
       </b-col>
     </b-row>
+    
   </b-container>
+  
 </template>
 
 <script>
+import Auth from './Auth'
 export default {
   name: 'Navbar',
+  components:{
+    Auth
+  }
 }
 </script>
 <style scoped>
   .navbar1 {
     height: 60px;
     background-color: #17a2b8;
+  }
+
+  button {
+    background-color: greenyellow;
   }
 
   .img-fluid {

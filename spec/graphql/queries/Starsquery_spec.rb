@@ -10,7 +10,7 @@ RSpec.describe 'Star queries', type: :request do
       expect(data).to eq('1')
     end
     it 'all star list' do
-      post '/graphql',params: {query: 'query{allstars{id}}'}
+      post '/graphql', params: { query: 'query{allstars{id}}' }
       json = JSON.parse(response.body)
       data = json['data']['allstars']
       expect(data.count).to eq(1)
