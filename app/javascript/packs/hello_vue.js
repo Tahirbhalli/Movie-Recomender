@@ -12,9 +12,42 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import vueRouter from 'vue-router'
 import Home from '../components/Home'
-import VueApollo from 'vue-apollo'
+import VueApollo from "vue-apollo";
+import ApolloClient from "apollo-client";
+import { HttpLink } from "apollo-link-http";
+import { InMemoryCache } from "apollo-cache-inmemory";
 
-Vue.use(VueApollo)
+Vue.use(VueApollo);
+
+
+const getHeaders = () => {
+  const headers = {};
+   const token = window.localStorage.getItem('apollo-token');
+   if (token) {
+     headers.authorization = `Bearer ${token}`;
+   }
+   return headers;
+ };
+ const token = document.querySelector('[name=csrf-token]').content
+ // Create an http link:
+ const link = new HttpLink({
+   uri: 'http://127.0.0.1:3000/graphql',
+   fetch,
+   headers: {'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').getAttribute('content')}
+ });
+ const client = new ApolloClient({
+   link: link,
+   cache: new InMemoryCache({
+     addTypename: true
+   })
+ });
+
+
+ const apolloProvider = new VueApollo({
+  defaultClient: client,
+})
+
+//Vue.use(VueApollo)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(vueRouter);
@@ -32,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const app = new Vue({
     router: router,
+    apolloProvider,
     render: h => h(App)
   }).$mount()
   document.body.appendChild(app.$el)
