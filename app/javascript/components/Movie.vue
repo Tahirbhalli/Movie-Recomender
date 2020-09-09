@@ -10,8 +10,10 @@
         <div>Director Name: </div>
         <router-link v-bind:to="`/director/${currentmovie.director.id}`">{{currentmovie.director.name}}</router-link>
       </div>
+      <h2 class="font-weight-bold">Poster and Images</h2>
       <div class="container">
-        <img v-bind:src="currentmovie.posterUrl" alt="none">
+        <img v-bind:src="currentmovie.posterUrl" alt="image">
+        <img v-for="image in images.movieImages" :key="image.imageUrl" v-bind:src="image.imageUrl" alt="oter movie image">
       </div>
     </div>
 </template>

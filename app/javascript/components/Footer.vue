@@ -14,7 +14,7 @@
             <textarea v-model="formdata.comment" class="form-control" rows="5" id="comment"></textarea>
         </div>
   
-        <button type="submit" class="btn btn-primary container">ASK</button>
+        <button type="submit" class="btn btn-primary container">Leave Message</button>
     </form>
     </div>
 </template>
