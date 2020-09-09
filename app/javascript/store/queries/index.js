@@ -57,21 +57,20 @@ export async function fetchMoviesList({ commit }) {
     const response = await graphqlClient.query({
         query: gql`query{
             allstars{
-                id
+              id
+              name
+              picUrl
+              description
+              movies{
+                id 
                 name
-                picUrl
                 description
-                movies{
-                  id 
-                  name
-                  description
-                  posterUrl
-                  director{
-                      name
-                  }
+                posterUrl
+                director{
+                    name
                 }
               }
-        }`,
+        }}`,
     })
     commit('setStarList', response.data.allstars);
   }

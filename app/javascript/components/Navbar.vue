@@ -9,6 +9,7 @@
       </b-col>
       <b-col cols="2" class="mt-3 text-right">
         <Auth v-if="tok === null" />
+        <LogedUser v-else />
       </b-col>
     </b-row>
     
@@ -18,10 +19,12 @@
 
 <script>
 import Auth from './Auth'
+import LogedUser from './LogedUser'
 export default {
   name: 'Navbar',
   components:{
-    Auth
+    Auth,
+    LogedUser
   },
   computed:{
     tok(){

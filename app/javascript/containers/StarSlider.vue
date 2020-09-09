@@ -25,22 +25,46 @@
 </template>
 <script>
 import StarCard from '../containers/StarCard'
-import { mapState } from 'vuex';
+import axios from 'axios'
 export default {
-    beforeCreate() {
-    this.$store.dispatch('fetchStarList');
+    mounted() {
+        const body={query: `query{
+              allstars{
+              id
+              name
+              picUrl
+              description
+              movies{
+                id 
+                name
+                description
+                posterUrl
+                director{
+                    name
+                }
+              }
+        }
+            }`}
+            axios.post('/graphql',body).catch(err => {
+    console.error(err.data.data)
+  })
+  .then(res => {
+      this.allstars=res.data.data.allstars
+    console.log(res.data.data.allstars)
+  })
   },
-  computed:{
-      allstars(){
-        return this.$store.state.allstars
-    }
-  },
+//   computed:{
+//       allstars(){
+//         return this.$store.state.allstars
+//     }
+//   },
     components:{
         StarCard,
     },
     data(){
         return {
-            slide: 1,      
+            slide: 1, 
+            allstars: []     
         }
     },
     methods:{
