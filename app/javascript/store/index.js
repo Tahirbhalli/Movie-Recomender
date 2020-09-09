@@ -1,65 +1,19 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueApollo from "vue-apollo";
-import graphqlClient from './utils';
+import {fetchMovieImages,fetchMoviesList} from './queries/index'
+import {setMovieImages,setMoviesList} from './mutations/index'
+
 Vue.use(VueApollo)
-import gql from 'graphql-tag';
-
-
-
 Vue.use(Vuex)
 
 export const mutations = {
-  setMovieImages(state,movieImages){
-    state.movieimages=movieImages;
-  },
-  setMoviesList(state, allmovies) {
-    state.allmovies = allmovies;
-  },
+  setMoviesList,setMovieImages
 
   };
   
   export const actions = {
-    async fetchMovieImages({ commit },id) {
-      const response = await graphqlClient.query({
-          query: gql`query{
-            movie(id: ${id}) {
-              id
-              movieImages{
-                imageUrl
-              }
-              genersofmovies{
-                id
-                name
-              }
-            }
-          }`
-          
-      })
-      commit('setMovieImages',response.data.movie)
-    },
-    async fetchMoviesList({ commit }) {
-        const response = await graphqlClient.query({
-            query: gql`query{
-                allmovies {
-                    id
-                    name
-                    description
-                    posterUrl
-                    director{
-                      id
-                      name
-                    }
-                    stars{
-                      id
-                      name
-                    }
-                  }
-                }`,
-        })
-        commit('setMoviesList', response.data.allmovies);
-    }
-    // ...
+    fetchMovieImages,fetchMoviesList
   };
   
   export const state = {

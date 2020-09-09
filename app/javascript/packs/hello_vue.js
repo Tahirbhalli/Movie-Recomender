@@ -21,21 +21,12 @@ import {store} from '../store/index'
 import Actor from '../components/Actor'
 import Geners from '../components/Geners'
 import Director from '../components/Director'
-//Vue.use(VueApollo);
 
 
-const getHeaders = () => {
-  const headers = {};
-   const token = window.localStorage.getItem('apollo-token');
-   if (token) {
-     headers.authorization = `Bearer ${token}`;
-   }
-   return headers;
- };
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(vueRouter);
-const routes =[
+const routes = [
   {path: '/',component:Home},
   {path: '/movie/:id',component:Movie},
   {path: '/actor/:id',component:Actor},
@@ -48,10 +39,8 @@ const router = new vueRouter({
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  
   const app = new Vue({
     router: router,
-    
     store,
     render: h => h(App)
   }).$mount()
