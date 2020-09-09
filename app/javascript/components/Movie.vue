@@ -1,17 +1,25 @@
 <template>
     <div>
-        {{id}}
-
+        
     </div>
 </template>
 <script>
-
+import { mapState } from 'vuex';
 export default {
-    data(){
-        return{
-            id: this.$route.params.id
+    beforeCreate() {
+    this.$store.dispatch('fetchMovie',1);
+  },
+    computed: {
+        ...mapState(['movie']),
+        movies(){
+            for (let index = 0; index < this.$store.state.allmovies.length; index++) {
+                if (this.$store.state.allmovies[index].id.toString() === this.$route.params.id.toString()){
+                    return this.$store.state.allmovies[index]
+                }
+                
+            }
             
         }
-    }
+  }
 }
 </script>

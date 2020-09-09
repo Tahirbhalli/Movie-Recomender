@@ -18,7 +18,9 @@ import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import Movie from '../components/Movie'
 import {store} from '../store/index'
-
+import Actor from '../components/Actor'
+import Geners from '../components/Geners'
+import Director from '../components/Director'
 //Vue.use(VueApollo);
 
 
@@ -30,33 +32,15 @@ const getHeaders = () => {
    }
    return headers;
  };
-//  const token = document.querySelector('[name=csrf-token]').content
-//  // Create an http link:
-//  const link = new HttpLink({
-//    uri: '/graphql',
-//    fetch,
-//    headers: {'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').getAttribute('content')}
-//  });
-//  const client = new ApolloClient({
-//    link: link,
-//    cache: new InMemoryCache({
-//      addTypename: true
-//    })
-//  });
-
-
-//  const apolloProvider = new VueApollo({
-//   defaultClient: client,
-// })
-
-//Vue.use(VueApollo)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(vueRouter);
 const routes =[
   {path: '/',component:Home},
-  {path: '/movie/:id',component:Movie}
-
+  {path: '/movie/:id',component:Movie},
+  {path: '/actor/:id',component:Actor},
+  {path: '/generes/:id',component:Geners},
+  {path: '/director/:id',component:Director},
 ]
 const router = new vueRouter({
   routes

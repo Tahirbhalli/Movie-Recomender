@@ -1,12 +1,12 @@
 <template>
     <div>
-        <Reel />
+        <MovieSlider />
 
         
     </div>
 </template>
 <script>
-import Reel from './Reel'
+import MovieSlider from './MovieSlider'
 
 
 export default {
@@ -15,7 +15,7 @@ export default {
     this.$store.dispatch('fetchMoviesList');
   },
     components:{
-       Reel,
+       MovieSlider,
     },
     data(){
         return{

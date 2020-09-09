@@ -8,7 +8,6 @@
                             <div class="card-group flex">
                                 <Card v-for="index in 3" :key="parseInt(index)"
                                 v-bind:id="(index*slide).toString()"
-                                v-bind:geners="allmovies[index*slide].genersofmovies"
                                 v-bind:actors="allmovies[index*slide].stars"
                                 v-bind:title="allmovies[index*slide].name"
                                 v-bind:poster_image="allmovies[index*slide].posterUrl"
@@ -62,11 +61,6 @@ export default {
 .item-font {
   font-size: 1.2em;
 }
-
-/* .carousel-control-next-icon {
-  background-image: url('../images/chevron-left.svg');
-  v-bind:style="{ 'background-image':  + 'url(../images/right-arrow.png)'+';' }"
-} */
 
 .arrow-left {
   background-size: 50px;

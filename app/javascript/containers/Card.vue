@@ -6,17 +6,13 @@
          <p class="card-text">
            <b class="item-font"> {{title}}</b> <br />
          <span >{{description}}</span> <br />
-        <b> Actors: </b><span class="badge-info" style="cursor: pointer;" v-for="actor in actors" :key="actor">{{actor.name}}</span>
+        Actors: <router-link v-for="actor in actors" :key="actor.id" v-bind:to="`/actor/${actor.id}`"><b style="cursor: pointer;"> {{actor.name}} </b></router-link>
         </p>                                
-        <p class="card-text text-right">
-        <a class="red-color">genres[0]</a>
-</p>
-<p class="card-text text-right">
-   <a class="red-color"><b>Director:</b>{{director.name}}</a>
-</p>
-      </div>
+        <p class="card-text text-left">
+          <b>Director:</b><router-link class="red-color" v-bind:to="`/director/${director.id}`">{{director.name}}</router-link>
+        </p>
      </div>
-     
+ </div>
 </template>
 <script>
 export default {
@@ -34,10 +30,10 @@ export default {
         description: String,
         genres: Array,
         director:{
-            id: Number,
+            id: String,
             name: String
         },
-        actors: Array
+        actors: Array,
     }
     
 }
