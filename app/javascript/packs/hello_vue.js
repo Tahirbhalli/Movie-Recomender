@@ -31,7 +31,6 @@ const routes = [
   {path: '/movie/:id',component:Movie},
   {path: '/actor/:id',component:Actor},
   {path: '/generes/:id',component:Geners},
-  {path: '/director/:id',component:Director},
 ]
 const router = new vueRouter({
   routes

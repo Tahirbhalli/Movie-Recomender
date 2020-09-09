@@ -33,9 +33,12 @@
 import Card from '../containers/Card'
 import { mapState } from 'vuex';
 export default {
-    computed: {
-    ...mapState(['allmovies']),
-  },
+//     computed: {
+//     ...mapState(['allmovies']),
+//   },
+    props:{
+        allmovies: [],
+    },
     components:{
         Card,
     },

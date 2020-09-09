@@ -24,7 +24,6 @@
   </form>
 </template>
 <script>
-import gql from 'graphql-tag';
 
 export default {
     methods:{

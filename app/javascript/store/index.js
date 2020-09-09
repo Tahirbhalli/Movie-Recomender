@@ -1,19 +1,19 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueApollo from "vue-apollo";
-import {fetchMovieImages,fetchMoviesList,fetchStarList} from './queries/index'
-import {setMovieImages,setMoviesList,setStarList,settokken,setstar} from './mutations/index'
+import {fetchMovieImages,fetchMoviesList} from './queries/index'
+import {setMovieImages,setMoviesList,settokken,setstar} from './mutations/index'
 
 Vue.use(VueApollo)
 Vue.use(Vuex)
 
 export const mutations = {
-  setMoviesList,setMovieImages,setStarList,settokken,setstar
+  setMoviesList,setMovieImages,settokken,setstar
 
   };
   
   export const actions = {
-    fetchMovieImages,fetchMoviesList,fetchStarList,
+    fetchMovieImages,fetchMoviesList,
     CreateTokken({commit},tokken){
       commit('settokken',tokken)
     },
@@ -27,7 +27,7 @@ export const mutations = {
     allstars: [],
     movieimages: [],
     tokken: null,
-    star: null
+    star: null,
   };
   
   export const store =  new Vuex.Store({

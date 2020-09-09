@@ -53,24 +53,3 @@ export async function fetchMoviesList({ commit }) {
       })
       commit('settokken',response.data.createUser)
     }
-  export async function fetchStarList({commit}){
-    const response = await graphqlClient.query({
-        query: gql`query{
-            allstars{
-              id
-              name
-              picUrl
-              description
-              movies{
-                id 
-                name
-                description
-                posterUrl
-                director{
-                    name
-                }
-              }
-        }}`,
-    })
-    commit('setStarList', response.data.allstars);
-  }

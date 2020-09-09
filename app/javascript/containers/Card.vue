@@ -4,12 +4,12 @@
          <router-link v-bind:to="`/movie/${id}`"><img v-bind:src="poster_image" class=" card-img-top pr-1 mt-1 pl-1" alt="Dara pics" /></router-link>
         <div class="card-body para">
          <p class="card-text">
-           <b class="item-font"> {{title}}</b> <br />
+           <b class="item-font"> {{ title }}</b> <br />
          <span >{{description}}</span> <br />
         Actors: <router-link v-for="actor in actors" :key="actor.id" v-bind:to="`/actor/${actor.id}`"><b style="cursor: pointer;"> {{actor.name}} </b></router-link>
         </p>                                
         <p class="card-text text-left">
-          <b>Director:</b><router-link class="red-color" v-bind:to="`/director/${director.id}`">{{director.name}}</router-link>
+          <b>Director:</b><b>{{director.name}}</b>
         </p>
      </div>
  </div>

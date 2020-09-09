@@ -8,7 +8,7 @@
       </div>
       <div class="d-flex mt-2">
         <div>Director Name: </div>
-        <router-link v-bind:to="`/director/${currentmovie.director.id}`">{{currentmovie.director.name}}</router-link>
+        <b>{{currentmovie.director.name}}</b>
       </div>
       <h2 class="font-weight-bold">Poster and Images</h2>
       <div class="container">
