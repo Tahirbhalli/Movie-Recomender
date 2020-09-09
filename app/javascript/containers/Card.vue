@@ -1,12 +1,12 @@
 <template>
 
  <div class="card mx-3">
-         <router-link to="/movie/1"><img v-bind:src="poster_image" class=" card-img-top pr-1 mt-1 pl-1" alt="Dara pics" /></router-link>
+         <router-link v-bind:to="`/movie/${id}`"><img v-bind:src="poster_image" class=" card-img-top pr-1 mt-1 pl-1" alt="Dara pics" /></router-link>
         <div class="card-body para">
          <p class="card-text">
            <b class="item-font"> {{title}}</b> <br />
          <span >{{description}}</span> <br />
-        <b> Actors: </b><span v-for="actor in actors" :key="actor">{{actor.name}}</span>
+        <b> Actors: </b><span class="badge-info" style="cursor: pointer;" v-for="actor in actors" :key="actor">{{actor.name}}</span>
         </p>                                
         <p class="card-text text-right">
         <a class="red-color">genres[0]</a>
@@ -22,7 +22,7 @@
 export default {
     
     props:{
-      id: Number,
+      id: String,
         title: {
           type:  String,
           required: true

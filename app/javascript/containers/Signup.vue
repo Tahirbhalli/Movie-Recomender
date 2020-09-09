@@ -19,15 +19,28 @@
     <div v-if="formdata.password !== formdata.repassword" class="alert alert-danger">
       <strong>Warning</strong> Password not Matched
     </div>
-    <button type="submit" class="btn btn-primary container">Submit</button>
+    <button v-if="formdata.password === formdata.repassword" type="submit" class="btn btn-primary container">Submit</button>
   </form>
 </template>
 <script>
-export default {
+import gql from 'graphql-tag';
+
+export default { 
     methods:{
         submitform(e){
             e.preventDefault();
             console.log(this.formdata);
+            const SignUp = gql`
+                mutation{
+                  createUser(input:{
+                    email: ${this.formdata.email},
+                    password: ${this.formdata.password},
+                    name: ${this.formdata.name}
+                  })
+                }`;
+            this.$apollo.mutate({
+              mutation: SignUp
+            })             
         }
     },
     data(){

@@ -1,36 +1,20 @@
 <template>
     <section class="d-none d-md-block d-lg-block d-xl-block">
+        <h1 class="m-4 font-weight-bold text-capitalize text-white">All Movies</h1>
             <div class="m-5 row">
                 <div id="carouselExampleInterval2" class="carousel slide m-5" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-group flex">
-                                
-                                <Card v-for="index in 3" :key="index"
+                                <Card v-for="index in 3" :key="parseInt(index)"
+                                v-bind:id="(index*slide).toString()"
+                                v-bind:geners="allmovies[index*slide].genersofmovies"
+                                v-bind:actors="allmovies[index*slide].stars"
                                 v-bind:title="allmovies[index*slide].name"
                                 v-bind:poster_image="allmovies[index*slide].posterUrl"
                                 v-bind:director="allmovies[index*slide].director"
                                 v-bind:description="allmovies[index*slide].description"
                                 />
-                                <!--Card
-                                v-bind:title="allmovies[1].name"
-                                v-bind:poster_image="allmovies[1].posterUrl"
-                                v-bind:director="allmovies[1].director"
-                                v-bind:description="allmovies[1].description"
-                                />
-                                <Card
-                                v-bind:title="allmovies[2].name"
-                                v-bind:poster_image="allmovies[2].posterUrl"
-                                v-bind:director="allmovies[2].director"
-                                v-bind:description="allmovies[2].description"
-                                /-->
-                            </div>
-                        </div>
-                         <div class="carousel-item">
-                            <div class="card-group flex">
-                                <Card />
-                                <Card />
-                                <Card />
                             </div>
                         </div>
                     </div>
@@ -48,29 +32,13 @@
 </template>
 <script>
 import Card from '../containers/Card'
-import gql from 'graphql-tag'
-
+import { mapState } from 'vuex';
 export default {
-    apollo: {
-    allmovies: gql`query{
-        allmovies {
-            id
-            name
-            description
-            posterUrl
-            director{
-              name
-            }
-          }
-        }`,
+    computed: {
+    ...mapState(['allmovies']),
   },
     components:{
         Card,
-    },
-    computed:{
-        movies(){
-            return this.$store.state.allmovies
-        }
     },
     data(){
         return {
@@ -117,7 +85,6 @@ export default {
 .add-item-icon {
   display: inline-block;
   opacity: 1;
-  float: left;
   margin-top: 3px;
   border: 1px solid #888;
 }

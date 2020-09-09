@@ -1,14 +1,19 @@
 <template>
     <div>
         <Reel />
+
         
     </div>
 </template>
 <script>
 import Reel from './Reel'
 
+
 export default {
     
+  beforeCreate() {
+    this.$store.dispatch('fetchMoviesList');
+  },
     components:{
        Reel,
     },

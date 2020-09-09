@@ -17,8 +17,9 @@ import ApolloClient from "apollo-client";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import Movie from '../components/Movie'
+import {store} from '../store/index'
 
-Vue.use(VueApollo);
+//Vue.use(VueApollo);
 
 
 const getHeaders = () => {
@@ -29,24 +30,24 @@ const getHeaders = () => {
    }
    return headers;
  };
- const token = document.querySelector('[name=csrf-token]').content
- // Create an http link:
- const link = new HttpLink({
-   uri: '/graphql',
-   fetch,
-   headers: {'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').getAttribute('content')}
- });
- const client = new ApolloClient({
-   link: link,
-   cache: new InMemoryCache({
-     addTypename: true
-   })
- });
+//  const token = document.querySelector('[name=csrf-token]').content
+//  // Create an http link:
+//  const link = new HttpLink({
+//    uri: '/graphql',
+//    fetch,
+//    headers: {'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').getAttribute('content')}
+//  });
+//  const client = new ApolloClient({
+//    link: link,
+//    cache: new InMemoryCache({
+//      addTypename: true
+//    })
+//  });
 
 
- const apolloProvider = new VueApollo({
-  defaultClient: client,
-})
+//  const apolloProvider = new VueApollo({
+//   defaultClient: client,
+// })
 
 //Vue.use(VueApollo)
 Vue.use(BootstrapVue)
@@ -66,8 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const app = new Vue({
     router: router,
-    apolloProvider,
     
+    store,
     render: h => h(App)
   }).$mount()
   document.body.appendChild(app.$el)
