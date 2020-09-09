@@ -39,6 +39,20 @@ export async function fetchMoviesList({ commit }) {
       })
       commit('setMoviesList', response.data.allmovies);
   }
+  export async function SignUp({commit},name,email,password){
+    const response = await graphqlClient.mutate({
+        mutation: gql`mutation {
+          createUser(input: {
+            email: ${email},
+            password: ${password},
+            name: ${name},
+          })}{
+            createUser
+          }
+        }`
+      })
+      commit('settokken',response.data.createUser)
+    }
   export async function fetchStarList({commit}){
     const response = await graphqlClient.query({
         query: gql`query{
@@ -51,6 +65,10 @@ export async function fetchMoviesList({ commit }) {
                   id 
                   name
                   description
+                  posterUrl
+                  director{
+                      name
+                  }
                 }
               }
         }`,

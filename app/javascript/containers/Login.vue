@@ -12,13 +12,27 @@
   </form>
 </template>
 <script>
+import axios from 'axios'
 export default {
     methods:{
         submitform(e){
           e.preventDefault();
-          console.log(this.formdata)
+          const body={query: `mutation{
+              signinMutation(input:{
+    email: "${this.formdata.email}",
+    password: "${this.formdata.password}"
+  })
+            }`}
+            axios.post('/graphql',body).catch(err => {
+    console.error(err.data.data)
+  })
+  .then(res => {
+    this.$store.dispatch('CreateTokken',res.data.data.signinMutation)
+    console.log(res.data.data.signinMutation)
+  })
+            console.log(this.$store.state.tokken);         
         }
-    },
+        },
     data(){
         return{
             formdata:{

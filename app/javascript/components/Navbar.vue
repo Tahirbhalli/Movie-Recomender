@@ -8,7 +8,7 @@
         <input type="search" v-model="search" placeholder="Search movie" class="form-control">
       </b-col>
       <b-col cols="2" class="mt-3 text-right">
-        <Auth />
+        <Auth v-if="tok === null" />
       </b-col>
     </b-row>
     
@@ -22,6 +22,11 @@ export default {
   name: 'Navbar',
   components:{
     Auth
+  },
+  computed:{
+    tok(){
+      return this.$store.state.tokken
+    }
   },
   data(){
     return{

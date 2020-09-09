@@ -1,5 +1,6 @@
 <template>
   <form v-on:submit="submitform">
+    {{tok}}
     <div class="form-group">
       <label for="name">Name:</label>
       <input type="text" required v-model="formdata.name" class="form-control" placeholder="Enter email" id="name">
@@ -25,23 +26,16 @@
 <script>
 import gql from 'graphql-tag';
 
-export default { 
+export default {
     methods:{
         submitform(e){
-            e.preventDefault();
-            console.log(this.formdata);
-            const SignUp = gql`
-                mutation{
-                  createUser(input:{
-                    email: ${this.formdata.email},
-                    password: ${this.formdata.password},
-                    name: ${this.formdata.name}
-                  })
-                }`;
-            this.$apollo.mutate({
-              mutation: SignUp
-            })             
+        e.preventDefault()
         }
+    },
+    computed:{
+      tok(){
+        return this.$store.state.tokken
+      }
     },
     data(){
         return{
