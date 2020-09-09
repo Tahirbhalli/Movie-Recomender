@@ -1,29 +1,28 @@
 <template>
-  <div class="container">
-   <div class="card img-fluid" style="width: 500px; height: 200px;">
-    <img class="card-img-top" v-bind:src="poster_image" alt="Card image" style="width: 100%; height: 400px;">
-    <div class="card-img-overlay">
-      <h4 class="card-title">{{title}}</h4>
-      <p class="card-text">{{description}}</p>
-      <!--router-link to=""></router-link-->
-      <div class="d-flex">
-          <span  v-for="g in genres" :key=g class="p-2 text-primary" style="cursor: pointer;">{{g}}</span>
-      </div>
-      <div class="d-flex">
-          <span class="p-2 text-primary" style="cursor: pointer;">{{director.name}}</span>
-      </div>
-      <div class="d-flex">
-          <span v-for="actor in actors" :key="actor.id" class="p-2 text-primary" style="cursor: pointer;">{{actor.name}}</span>
-      </div>
-    </div>
-  </div>
-</div>
 
+ <div class="card mx-3">
+         <router-link to="/movie/1"><img v-bind:src="poster_image" class=" card-img-top pr-1 mt-1 pl-1" alt="Dara pics" /></router-link>
+        <div class="card-body para">
+         <p class="card-text">
+           <b class="item-font"> {{title}}</b> <br />
+         <span >{{description}}</span> <br />
+        <b> Actors: </b><span v-for="actor in actors" :key="actor">{{actor.name}}</span>
+        </p>                                
+        <p class="card-text text-right">
+        <a class="red-color">genres[0]</a>
+</p>
+<p class="card-text text-right">
+   <a class="red-color"><b>Director:</b>{{director.name}}</a>
+</p>
+      </div>
+     </div>
+     
 </template>
 <script>
 export default {
     
     props:{
+      id: Number,
         title: {
           type:  String,
           required: true

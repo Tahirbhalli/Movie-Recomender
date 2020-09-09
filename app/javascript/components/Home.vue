@@ -1,40 +1,16 @@
 <template>
     <div>
-        {{user}}
-        <!--Card
-        title="cast away"
-        description="A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room."
-        v-bind:genres="['tahir','ahmad']"
-        v-bind:director="{id: 1,name: 'umair butt'}"
-        v-bind:actors="[{id: 1,name: 'di caprio'},{id: 1,name: 'di caprio'}]"
-        v-bind:poster_image="'https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg'"
-
-        /-->
-        <!--Card v-for="movie in movielist" :key="movie.name"
-        v-bind:title="movie.name"
-        description="A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room."
-        v-bind:genres="['tahir','ahmad']"
-        v-bind:director="{id: 1,name: 'umair butt'}"
-        v-bind:actors="[{id: 1,name: 'di caprio'},{id: 1,name: 'di caprio'}]"
-        v-bind:poster_image="'https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg'"
-
-        /-->
+        <Reel />
+        
     </div>
 </template>
 <script>
-import Card from '../containers/Card' 
-import gql from 'graphql-tag'
+import Reel from './Reel'
+
 export default {
-    apollo: {
-    // Simple query that will update the 'hello' vue property
-    user: gql`query{
-  user{
-    id
-  }
-}`,
-  },
+    
     components:{
-        Card,
+       Reel,
     },
     data(){
         return{
