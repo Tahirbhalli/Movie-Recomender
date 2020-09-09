@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 /* eslint no-console: 0 */
 // Run this example by adding <%= javascript_pack_tag 'hello_vue' %> (and
 // <%= stylesheet_pack_tag 'hello_vue' %> if you have styles in your component)
@@ -5,49 +7,44 @@
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
-import Vue from 'vue'
-import App from '../app.vue'
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import vueRouter from 'vue-router'
-import Home from '../components/Home'
-import VueApollo from "vue-apollo";
-import ApolloClient from "apollo-client";
-import { HttpLink } from "apollo-link-http";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import Movie from '../components/Movie'
-import {store} from '../store/index'
-import Actor from '../components/Actor'
-import Geners from '../components/Geners'
-import Director from '../components/Director'
+import Vue from 'vue';
+import vueRouter from 'vue-router';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import App from '../app.vue';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 
+import Home from '../components/Home';
 
-Vue.use(BootstrapVue)
-Vue.use(IconsPlugin)
+import Movie from '../components/Movie';
+import { store } from '../store/index';
+import Actor from '../components/Actor';
+import Geners from '../components/Geners';
+
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
 Vue.use(vueRouter);
 const routes = [
-  {path: '/',component:Home},
-  {path: '/movie/:id',component:Movie},
-  {path: '/actor/:id',component:Actor},
-  {path: '/generes/:id',component:Geners},
-]
+  { path: '/', component: Home },
+  { path: '/movie/:id', component: Movie },
+  { path: '/actor/:id', component: Actor },
+  { path: '/generes/:id', component: Geners },
+];
+// eslint-disable-next-line new-cap
 const router = new vueRouter({
-  routes
-})
-
+  routes,
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
-    router: router,
+    router,
     store,
-    render: h => h(App)
-  }).$mount()
-  document.body.appendChild(app.$el)
+    render: h => h(App),
+  }).$mount();
+  document.body.appendChild(app.$el);
 
-  console.log(app)
-})
-
+  console.log(app);
+});
 
 // The above code uses Vue without the compiler, which means you cannot
 // use Vue to target elements in your existing html templates. You would
@@ -61,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
 //   {{message}}
 //   <app></app>
 // </div>
-
 
 // import Vue from 'vue/dist/vue.esm'
 // import App from '../app.vue'

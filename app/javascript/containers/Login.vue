@@ -29,8 +29,7 @@ export default {
   .then(res => {
     this.$store.dispatch('CreateTokken',res.data.data.signinMutation)
     console.log(res.data.data.signinMutation)
-  })
-            console.log(this.$store.state.tokken);         
+  })   
         }
         },
     data(){

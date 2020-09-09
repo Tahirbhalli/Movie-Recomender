@@ -1,8 +1,9 @@
 import gql from 'graphql-tag';
 import graphqlClient from '../utils';
-export async function fetchMovieImages({ commit },id) {
-    const response = await graphqlClient.query({
-        query: gql`query{
+
+export async function fetchMovieImages({ commit }, id) {
+  const response = await graphqlClient.query({
+    query: gql`query{
           movie(id: ${id}) {
             id
             movieImages{
@@ -13,14 +14,14 @@ export async function fetchMovieImages({ commit },id) {
               name
             }
           }
-        }`
-        
-    })
-    commit('setMovieImages',response.data.movie)
-  }
+        }`,
+
+  });
+  commit('setMovieImages', response.data.movie);
+}
 export async function fetchMoviesList({ commit }) {
-      const response = await graphqlClient.query({
-          query: gql`query{
+  const response = await graphqlClient.query({
+    query: gql`query{
               allmovies {
                   id
                   name
@@ -36,12 +37,12 @@ export async function fetchMoviesList({ commit }) {
                   }
                 }
               }`,
-      })
-      commit('setMoviesList', response.data.allmovies);
-  }
-  export async function SignUp({commit},name,email,password){
-    const response = await graphqlClient.mutate({
-        mutation: gql`mutation {
+  });
+  commit('setMoviesList', response.data.allmovies);
+}
+export async function SignUp({ commit }, name, email, password) {
+  const response = await graphqlClient.mutate({
+    mutation: gql`mutation {
           createUser(input: {
             email: ${email},
             password: ${password},
@@ -49,7 +50,7 @@ export async function fetchMoviesList({ commit }) {
           })}{
             createUser
           }
-        }`
-      })
-      commit('settokken',response.data.createUser)
-    }
+        }`,
+  });
+  commit('settokken', response.data.createUser);
+}

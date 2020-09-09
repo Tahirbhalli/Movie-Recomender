@@ -24,13 +24,28 @@
   </form>
 </template>
 <script>
-
+import axios from 'axios'
 export default {
     methods:{
         submitform(e){
         e.preventDefault()
+        const body={query: `mutation{
+              createUser(input:{
+    email: "${this.formdata.email}",
+    password: "${this.formdata.password}",
+    name: "${this.formdata.name}"
+  })
+            }`}
+            axios.post('/graphql',body).catch(err => {
+    console.error(err.data.data)
+  })
+  .then(res => {
+    this.$store.dispatch('CreateTokken',res.data.data.createUser)
+    console.log(res.data.data.createUser)
+  })
+            console.log(this.$store.state.tokken);         
         }
-    },
+        },
     computed:{
       tok(){
         return this.$store.state.tokken

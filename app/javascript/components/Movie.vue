@@ -18,7 +18,6 @@
     </div>
 </template>
 <script>
-import { mapState } from 'vuex';
 export default {
     beforeCreate() {
     this.$store.dispatch('fetchMovieImages',parseInt(this.$route.params.id));

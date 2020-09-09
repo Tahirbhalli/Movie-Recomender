@@ -25,6 +25,7 @@ export default {
         },
         poster_image: {
             type: String,
+            // eslint-disable-next-line no-undef
             default: require("../images/default.png")
         },
         description: String,
