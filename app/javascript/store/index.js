@@ -1,19 +1,19 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueApollo from "vue-apollo";
-import {fetchMovieImages,fetchMoviesList} from './queries/index'
-import {setMovieImages,setMoviesList} from './mutations/index'
+import {fetchMovieImages,fetchMoviesList,fetchStarList} from './queries/index'
+import {setMovieImages,setMoviesList,setStarList} from './mutations/index'
 
 Vue.use(VueApollo)
 Vue.use(Vuex)
 
 export const mutations = {
-  setMoviesList,setMovieImages
+  setMoviesList,setMovieImages,setStarList
 
   };
   
   export const actions = {
-    fetchMovieImages,fetchMoviesList
+    fetchMovieImages,fetchMoviesList,fetchStarList
   };
   
   export const state = {
