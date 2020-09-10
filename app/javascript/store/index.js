@@ -10,7 +10,13 @@ Vue.use(VueApollo);
 Vue.use(Vuex);
 
 export const mutations = {
-  setMoviesList, setMovieImages, settokken, setstar,
+  setMoviesList,
+  setMovieImages,
+  settokken,
+  setstar,
+  setlogout(state, tokken = null) {
+    state.tokken = tokken;
+  },
 
 };
 
@@ -22,6 +28,9 @@ export const actions = {
   },
   getstar({ commit }, star) {
     commit('setstar', star);
+  },
+  logout({ commit }) {
+    commit('setlogout', null);
   },
 };
 

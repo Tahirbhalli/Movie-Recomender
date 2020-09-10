@@ -20,7 +20,7 @@
     <div v-if="formdata.password !== formdata.repassword" class="alert alert-danger">
       <strong>Warning</strong> Password not Matched
     </div>
-    <button v-if="formdata.password === formdata.repassword" type="submit" class="btn btn-primary container">Submit</button>
+    <button v-if="formdata.password === formdata.repassword" type="submit" class="btn btn-primary container">Sign UP</button>
   </form>
 </template>
 <script>
@@ -42,8 +42,7 @@ export default {
   .then(res => {
     this.$store.dispatch('CreateTokken',res.data.data.createUser)
     console.log(res.data.data.createUser)
-  })
-            console.log(this.$store.state.tokken);         
+  })        
         }
         },
     computed:{

@@ -15,7 +15,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 import Home from '../components/Home';
-
+import ResetPassword from '../containers/ResetPassword';
 import Movie from '../components/Movie';
 import { store } from '../store/index';
 import Actor from '../components/Actor';
@@ -29,6 +29,7 @@ const routes = [
   { path: '/movie/:id', component: Movie },
   { path: '/actor/:id', component: Actor },
   { path: '/generes/:id', component: Geners },
+  { path: '/resetpassword', component: ResetPassword },
 ];
 // eslint-disable-next-line new-cap
 const router = new vueRouter({

@@ -8,7 +8,7 @@
       <label for="pwd">Password:</label>
       <input type="password" v-model="formdata.password" required class="form-control" placeholder="Enter password" id="pwd">
     </div>
-    <button type="submit" class="btn btn-primary container">Submit</button>
+    <button type="submit" class="btn btn-primary container">Login</button>
   </form>
 </template>
 <script>
@@ -28,7 +28,6 @@ export default {
   })
   .then(res => {
     this.$store.dispatch('CreateTokken',res.data.data.signinMutation)
-    console.log(res.data.data.signinMutation)
   })   
         }
         },
