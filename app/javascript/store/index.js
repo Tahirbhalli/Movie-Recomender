@@ -21,6 +21,12 @@ export const mutations = {
   setlikedstars(state, stars) {
     state.likedstars = stars;
   },
+  setgenlist(state, geners) {
+    state.allgeners = geners;
+  },
+  setlikedgen(state, likedgen) {
+    state.likedgen = likedgen;
+  },
 };
 
 export const actions = {
@@ -41,6 +47,12 @@ export const actions = {
   getlikedstars({ commit }, stars) {
     commit('setlikedstars', stars);
   },
+  getallgeners({ commit }, allgeners) {
+    commit('setgenlist', allgeners);
+  },
+  getalllikedgen({ commit }, likedgen) {
+    commit('setlikedgen', likedgen);
+  },
 };
 
 export const state = {
@@ -51,6 +63,8 @@ export const state = {
   star: null,
   likedmovies: [],
   likedstars: [],
+  allgeners: [],
+  likedgen: [],
 };
 
 export const store = new Vuex.Store({

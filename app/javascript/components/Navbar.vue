@@ -5,7 +5,7 @@
         <router-link to="/"><h4 class="font-weight-bolder badge">Movizzz Recomendation</h4></router-link>
       </b-col>
       <b-col lg="7" class="col-md-9 text-center mt-3">
-        <input type="search" v-model="search" placeholder="Search movie" class="form-control">
+        <input type="search" v-model="searchs" placeholder="Search movie" class="form-control">
       </b-col>
       <b-col cols="2" class="mt-3 text-right">
         <Auth v-if="tok === null" />
@@ -22,6 +22,9 @@ import Auth from './Auth'
 import LogedUser from './LogedUser'
 export default {
   name: 'Navbar',
+  props:{
+    searchs: String
+  },
   components:{
     Auth,
     LogedUser

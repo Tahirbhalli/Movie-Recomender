@@ -8,8 +8,16 @@
       <div class="d-flex justify-content-center">
           <img v-bind:src="star.picUrl" alt="actor image" />
       </div>
-      
+      Recomended movies for This Actor:
+      <div v-for="movie in star.movies" :key="movie.id" class="col-3">
+          <div d-flex>
+            <img class="container" v-bind:src="movie.posterUrl" alt="actor image" />
+         <span>Movie: <b class="text-primary">name {{movie.name}}</b></span>
+         <span>Description: {{movie.description}}</span>
+         <span>Dirctor: <b class="text-primary">{{movie.director.name}}</b></span>
+         </div>
       </div>
+    </div>
 </template>
 
 <script>
@@ -25,17 +33,18 @@ export default {
           description
           picUrl
           movies{
-              id
-              posterUrl
-              name
-              stars{
-                  id
-                  name
-              }
-            director{
-              id
-              name
-          }
+              id,
+                  name,
+                  description,
+                  posterUrl,
+                  director{
+                    id,
+                    name,
+                  },
+                  stars{
+                    id
+                    name
+                  }
 
           }
       }

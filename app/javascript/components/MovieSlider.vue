@@ -1,11 +1,21 @@
 <template>
     <section class="d-none d-md-block d-lg-block d-xl-block">
-        <h1 class="m-4 font-weight-bold text-capitalize text-white">All Movies</h1>
+        <h1 class="m-4 font-weight-bold text-capitalize text-white">{{title}}</h1>
             <div class="m-5 row">
                 <div id="carouselExampleInterval2" class="carousel slide m-5" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-group flex">
+                                <div v-if="allmovies.length <= 3">
+                                <Card v-for="index in allmovies.length" :key="parseInt(index)"
+                                v-bind:id="parseInt(allmovies[index*slide].id).toString()"
+                                v-bind:actors="allmovies[index*slide].stars"
+                                v-bind:title="allmovies[index*slide].name"
+                                v-bind:poster_image="allmovies[index*slide].posterUrl"
+                                v-bind:director="allmovies[index*slide].director"
+                                v-bind:description="allmovies[index*slide].description"
+                                />
+                                </div>
                                 <Card v-for="index in 3" :key="parseInt(index)"
                                 v-bind:id="parseInt(allmovies[index*slide].id).toString()"
                                 v-bind:actors="allmovies[index*slide].stars"
@@ -35,6 +45,10 @@ export default {
     
     props:{
         allmovies: Array,
+        title: {
+            type: String,
+            default: 'All movies'
+        },
     },
     components:{
         Card,
@@ -47,7 +61,7 @@ export default {
     methods:{
         clickRight(e){
             e.preventDefault();
-            this.slide === 46 ? this.slide : this.slide += 1;
+            if(Math.ceil(this.allmovies.length/3) >= 3) this.slide === this.allmovies.length/3 ? this.slide : this.slide += 1;
         },
         clickLeft(e){
             e.preventDefault();

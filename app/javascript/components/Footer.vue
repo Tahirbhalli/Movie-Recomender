@@ -1,6 +1,6 @@
 <template>
-   <div class="d-flex justify-content-center">
-    <form v-on:submit="formsubmit" class="col-6 float-right text-white">
+   <div class="d-flex justify-content-center border-top">
+    <form v-on:submit="formsubmit" class="col-6 float-right text-white mt-5">
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" v-model="formdata.name" class="form-control" placeholder="Enter password" id="name">

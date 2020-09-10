@@ -43,6 +43,13 @@ export default {
     name
     posterUrl
     description
+    stars{
+      name
+      description
+    }
+    director{
+      name
+    }
   }
 
   }`
