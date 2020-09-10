@@ -1,22 +1,23 @@
 <template>
-       <div id="app">
-    <p>{{ message }}</p>
+  <div class="bg-information" id="app">
+    <Navbar />
+    <router-view></router-view>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 export default {
-  data: function () {
-    return {
-        message: "Hello Vue!"
-    }
+  components:{
+    Navbar,
+    Footer
   }
 }
 </script>
-
 <style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
+#app {
+  background-color: black;
 }
 </style>
