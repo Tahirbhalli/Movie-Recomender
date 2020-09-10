@@ -7,7 +7,7 @@ module Types
     field :director_id, Integer, null: true
     field :director, DirectorType, null: true
     field :movie_images, [MovieImageType], null: true
-    field :stars,[StarType],null: true
-    field :genersofmovies,[GenersofmovieType],null: true
+    field :stars, [StarType], null: true
+    field :genersofmovies, [GenersofmovieType], null: true
   end
 end

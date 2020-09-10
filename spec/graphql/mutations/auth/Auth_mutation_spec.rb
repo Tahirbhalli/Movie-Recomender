@@ -4,7 +4,8 @@ module Mutations
       User.create(name: 'dumy name', email: 'dummy@testing.com', password: '123456789')
     end
     it 'create a user' do
-      post '/graphql', params: { query: query(name: 'tahir ahmad', email: 'thibhalli16@gmail.com', password: '1234567890') }
+      post '/graphql', params: { query: query(name: 'tahir ahmad', email: 'thibhalli16@gmail.com',
+                                              password: '1234567890') }
       expect(User.where(name: 'tahir ahmad').exists?).to eq(true)
     end
     it 'login mutation' do
@@ -62,4 +63,4 @@ module Mutations
       GQL
     end
   end
-  end
+end

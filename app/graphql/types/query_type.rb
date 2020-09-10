@@ -1,16 +1,16 @@
 module Types
   class QueryType < Types::BaseObject
     include Auth
-    field :getgenmovies, [Types::MovieType],null: false,description: 'get all the movies of Generes' do
-      argument :genersid, Integer,required: true
+    field :getgenmovies, [Types::MovieType], null: false, description: 'get all the movies of Generes' do
+      argument :genersid, Integer, required: true
     end
     def getgenmovies(genersid:)
       @gener = Genersofmovie.where(id: genersid).exists?
       if @gener
-        g=Genersofmovie.find(genersid)
+        g = Genersofmovie.find(genersid)
         g.movies
       else
-        {id: 0}
+        { id: 0 }
       end
     end
     field :allgeners, [Types::GenersofmovieType], null: false, description: 'get all the list of Generes'
