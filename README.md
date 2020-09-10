@@ -1,5 +1,5 @@
 # Moviezz
-![screenshot](./screenshot.png)
+![screenshot](./screenshot1.png)
 - This is a Movizz recomendation system, where You can check the movies against stas and geners and like movise as well.
 # What it does
 - Sign up
