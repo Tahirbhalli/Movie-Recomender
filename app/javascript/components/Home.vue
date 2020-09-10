@@ -15,7 +15,6 @@ export default {
   },
   beforeCreate() {
     this.$store.dispatch('fetchMoviesList');
-    //this.$store.dispatch('fetchStarList');
   },
     components:{
        MovieSlider,

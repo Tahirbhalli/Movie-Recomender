@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import VueApollo from 'vue-apollo';
 import { fetchMovieImages, fetchMoviesList } from './queries/index';
 import {
-  setMovieImages, setMoviesList, settokken, setstar,
+  setMovieImages, setMoviesList, settokken, setstar, setlikedmovies,
 } from './mutations/index';
 
 Vue.use(VueApollo);
@@ -14,6 +14,7 @@ export const mutations = {
   setMovieImages,
   settokken,
   setstar,
+  setlikedmovies,
   setlogout(state, tokken = null) {
     state.tokken = tokken;
   },
@@ -23,6 +24,9 @@ export const mutations = {
 export const actions = {
   fetchMovieImages,
   fetchMoviesList,
+  fetchLikeMovies({ commit }, movies) {
+    commit('setlikedmovies', movies);
+  },
   CreateTokken({ commit }, tokken) {
     commit('settokken', tokken);
   },
@@ -40,6 +44,7 @@ export const state = {
   movieimages: [],
   tokken: null,
   star: null,
+  likedmovies: [],
 };
 
 export const store = new Vuex.Store({

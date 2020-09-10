@@ -7,14 +7,17 @@
          <span >{{star.description}}</span> <br />
         Movies: <router-link v-for="movie in star.movies" :key="movie.id" v-bind:to="`/movie/${parseInt(movie.id-1)}`"><b style="cursor: pointer;"> {{movie.name}} </b></router-link>
         </p>
-        
      </div>
  </div>
 </template>
 <script>
 export default {
+  methods:{
+    
+  },
   props:{
       star: Object,
-  }
+  },
+  
 }
 </script>

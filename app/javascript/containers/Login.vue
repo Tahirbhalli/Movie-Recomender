@@ -28,6 +28,23 @@ export default {
   })
   .then(res => {
     this.$store.dispatch('CreateTokken',res.data.data.signinMutation)
+     const body1= {
+  query: `query{
+    likedmovies(tokken: "${this.$store.state.tokken}") {
+    id
+    name
+    posterUrl
+    description
+  }
+
+  }`
+
+}
+axios.post('/graphql',body1).catch(err=>console.error(err)).then(res => { 
+            this.$store.dispatch('fetchLikeMovies',res.data.data.likedmovies)
+            })
+
+
   })   
         }
         },

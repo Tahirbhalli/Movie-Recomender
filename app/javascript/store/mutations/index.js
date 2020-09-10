@@ -10,3 +10,6 @@ export function settokken(state, tokken) {
 export function setstar(state, star) {
   state.star = star;
 }
+export function setlikedmovies(state, likedmovies) {
+  state.likedmovies = likedmovies;
+}
