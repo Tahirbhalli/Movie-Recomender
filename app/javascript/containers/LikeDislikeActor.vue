@@ -62,7 +62,6 @@ export default {
     shown(){
         for (let index = 0; index < this.$store.state.likedstars.length; index++) {
             if(this.$store.state.likedstars[index].id === this.$props.id){
-                console.log(this.$store.state.likedstars)
                 return 'dislike'
             }
         }

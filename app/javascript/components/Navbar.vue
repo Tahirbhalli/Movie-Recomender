@@ -2,7 +2,7 @@
   <b-container fluid class="navbar1">
     <b-row>
       <b-col lg="3" class="d-none d-lg-block mt-3">
-        <router-link to="/"><h4 class="font-weight-bolder badge">Movizzz Recomendation</h4></router-link>
+        <router-link to="/"><h4 class="font-weight-bolder badge">Movizzz </h4></router-link>
       </b-col>
       <b-col lg="7" class="col-md-9 text-center mt-3">
         <input type="search" v-model="searchs" placeholder="Search movie" class="form-control">

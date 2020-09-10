@@ -50,14 +50,8 @@ export default {
   })
   .then(res => {
       this.allstars=res.data.data.allstars
-    console.log(res.data.data.allstars)
   })
   },
-//   computed:{
-//       allstars(){
-//         return this.$store.state.allstars
-//     }
-//   },
     components:{
         StarCard,
     },

@@ -35,8 +35,7 @@ export default {
         }
         axios.post('/graphql',body).catch(err=>console.error(err)).then(res=>{
             this.$data.gmovies = res.data.data.getgenmovies
-            console.log(res.data.data.getgenmovies)
-        })
+          })
     }
     
 }

@@ -41,7 +41,6 @@ export default {
   })
   .then(res => {
     this.$store.dispatch('CreateTokken',res.data.data.createUser)
-    console.log(res.data.data.createUser)
   })        
         }
         },
