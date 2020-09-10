@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_07_195040) do
+ActiveRecord::Schema.define(version: 2020_09_10_145511) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "directors", force: :cascade do |t|
     t.string "name", null: false
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 2020_09_07_195040) do
   end
 
   create_table "genersandmovies", force: :cascade do |t|
-    t.integer "movie_id"
-    t.integer "genersofmovie_id"
+    t.bigint "movie_id"
+    t.bigint "genersofmovie_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["genersofmovie_id"], name: "index_genersandmovies_on_genersofmovie_id"
@@ -30,8 +33,8 @@ ActiveRecord::Schema.define(version: 2020_09_07_195040) do
   end
 
   create_table "genersandusers", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "genersofmovie_id"
+    t.bigint "user_id"
+    t.bigint "genersofmovie_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["genersofmovie_id"], name: "index_genersandusers_on_genersofmovie_id"
@@ -45,8 +48,8 @@ ActiveRecord::Schema.define(version: 2020_09_07_195040) do
   end
 
   create_table "liked_movies", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "movie_id"
+    t.bigint "user_id"
+    t.bigint "movie_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["movie_id"], name: "index_liked_movies_on_movie_id"
@@ -55,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_09_07_195040) do
 
   create_table "movie_images", force: :cascade do |t|
     t.string "image_url"
-    t.integer "movie_id"
+    t.bigint "movie_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["movie_id"], name: "index_movie_images_on_movie_id"
@@ -65,15 +68,15 @@ ActiveRecord::Schema.define(version: 2020_09_07_195040) do
     t.string "name"
     t.string "poster_url"
     t.text "description", default: "N/A"
-    t.integer "director_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "director_id"
     t.index ["director_id"], name: "index_movies_on_director_id"
   end
 
   create_table "starandmovies", force: :cascade do |t|
-    t.integer "movie_id"
-    t.integer "star_id"
+    t.bigint "movie_id"
+    t.bigint "star_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["movie_id"], name: "index_starandmovies_on_movie_id"
@@ -81,8 +84,8 @@ ActiveRecord::Schema.define(version: 2020_09_07_195040) do
   end
 
   create_table "starandusers", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "star_id"
+    t.bigint "user_id"
+    t.bigint "star_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["star_id"], name: "index_starandusers_on_star_id"
