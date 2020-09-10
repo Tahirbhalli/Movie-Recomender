@@ -7,7 +7,7 @@
                         <div class="carousel-item active">
                             <div class="card-group flex">
                                 <Card v-for="index in 3" :key="parseInt(index)"
-                                v-bind:id="(index*slide).toString()"
+                                v-bind:id="parseInt(allmovies[index*slide].id).toString()"
                                 v-bind:actors="allmovies[index*slide].stars"
                                 v-bind:title="allmovies[index*slide].name"
                                 v-bind:poster_image="allmovies[index*slide].posterUrl"
@@ -32,6 +32,7 @@
 <script>
 import Card from '../containers/Card'
 export default {
+    
     props:{
         allmovies: Array,
     },

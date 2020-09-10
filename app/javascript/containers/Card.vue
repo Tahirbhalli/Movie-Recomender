@@ -1,6 +1,7 @@
 <template>
 
  <div class="card mx-3">
+   id:{{id}}
          <router-link v-bind:to="`/movie/${id}`"><img v-bind:src="poster_image" class=" card-img-top pr-1 mt-1 pl-1" alt="Dara pics" /></router-link>
         <div class="card-body para">
          <p class="card-text">
@@ -13,77 +14,22 @@
         </p>
       
      </div>
-     <div class="container" v-if="tok !== null">
-      <button v-if="istoggle" v-on:click="like" type="button" class="container btn btn-primary">Like</button>
-      <button v-else v-on:click="dislike" type="button" class="btn btn-primary container">Dislike</button>
-      </div>
+     
+      <LikeDislike v-bind:id="id" v-if="tok !== null"/>
+
  </div>
 </template>
 <script>
 import axios from 'axios'
+import LikeDislike from './LikeDislike'
+
 export default {
-  mounted(){
-    console.log(this.$store.state.likedmovies)
+  components:{
+    LikeDislike
   },
   methods:{
-    show(){
-      if (this.$store.state.tokken === null) tok = 0
-      else{
-        this.$store.state.likedmovies.filter(movie=>{
-        if(movie.id.toString() === this.$props.id)
-        {
-         console.log(this.$store.state.likedmovies)
-          tok = 1
-        }
-      })
-    }
-    },
-    dislike(){
-      
-      this.istoggle = !this.istoggle;
-const body2= {
-  query: `query{
-    likedmovies(tokken: "${this.$store.state.tokken}") {
-    id
-    name
-    posterUrl
-    description
-  }
 
-  }`
-
-}
-
-    },
-    like(){
-      this.istoggle = !this.istoggle;
-      const body1= {
-  query: `query{
-    likedmovies(tokken: "${this.$store.state.tokken}") {
-    id
-    name
-    posterUrl
-    description
-  }
-
-  }`
-
-}
-      const body={query: `query {
-        likeAMovie(tokken:"${this.$store.state.tokken}",movieId:${parseInt(this.$props.id)})
-      }`}
-      axios.post('/graphql',body).catch(err=>console.error(err)).then(res => {
-        console.log(res.data.data)
-        if(res.data.data.likeAMovie === true){
-          axios.post('/graphql',body1).catch(err=>console.error(err)).then(res => { 
-            this.$store.dispatch('fetchLikeMovies',res.data.data.likedmovies)
-            console.log('ye')
-            
-           // this.$store.state.likedmovies.push({id: this.$props.id})
-            })
-        }
-      })
-    }
+    
     
   },
   data(){
@@ -94,9 +40,10 @@ const body2= {
   computed:{
     tok(){
       return this.$store.state.tokken
-    }
+    },
   },
     props:{
+      lmovie: Array,
       id: String,
         title: {
           type:  String,
