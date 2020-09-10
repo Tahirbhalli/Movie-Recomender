@@ -1,24 +1,46 @@
-# README
+# Moviezz
+![screenshot](./screenshot.png)
+- This is a Movizz recomendation system, where You can check the movies against stas and geners and like movise as well.
+# What it does
+- Sign up
+- Sign in
+- Change Password
+- Like movie
+- Like a actor
+- Movies againse actor
+- Movies against Geners
+# Built With
+- Ruby
+- Ruby on Rails
+- Graphql
+- Vue Js
+- Heroku
+- VSCode
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Live Demo
 
-Things you may want to cover:
+[Live Demo Link](https://shrouded-waters-94337.herokuapp.com/#/)
 
-* Ruby version
+## Presentation
 
-* System dependencies
+[presentation]()
 
-* Configuration
+## Author
 
-* Database creation
+👤 **Tahir Ahmad**
 
-* Database initialization
+- Github: [@tahirbhalli](https://github.com/Tahirbhalli)
+- Twitter: [@tahirbhalli](https://twitter.com/tahirbhalli)
+- Linkedin: [Tahir Ahmad](https://www.linkedin.com/in/tahir-ahmad-483035164/)
 
-* How to run the test suite
+# 🤝 Contributing
+Contributions, issues and feature requests are welcome!
 
-* Services (job queues, cache servers, search engines, etc.)
+# Show your support
+Give a ⭐️ if you like this project!
 
-* Deployment instructions
+📝 License
 
-* ...
+Check out my stories on medium to see what I'm talking about! Follow me on Instagram and Twitter to see what I am up to!
+
+Enjoy!
