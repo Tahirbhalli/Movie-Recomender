@@ -8,16 +8,27 @@
         Movies: <router-link v-for="movie in star.movies" :key="movie.id" v-bind:to="`/movie/${parseInt(movie.id-1)}`"><b style="cursor: pointer;"> {{movie.name}} </b></router-link>
         </p>
      </div>
+     <LikeDislikeActor v-bind:id="star.id" v-if="tok !== null"/>
  </div>
 </template>
 <script>
+import LikeDislikeActor from './LikeDislikeActor'
 export default {
+  computed:{
+    tok(){
+      return this.$store.state.tokken
+    },
+  },
   methods:{
     
   },
   props:{
       star: Object,
+     
   },
+  components:{
+    LikeDislikeActor
+  }
   
 }
 </script>

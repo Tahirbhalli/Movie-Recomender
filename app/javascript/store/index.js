@@ -18,7 +18,9 @@ export const mutations = {
   setlogout(state, tokken = null) {
     state.tokken = tokken;
   },
-
+  setlikedstars(state, stars) {
+    state.likedstars = stars;
+  },
 };
 
 export const actions = {
@@ -36,6 +38,9 @@ export const actions = {
   logout({ commit }) {
     commit('setlogout', null);
   },
+  getlikedstars({ commit }, stars) {
+    commit('setlikedstars', stars);
+  },
 };
 
 export const state = {
@@ -45,6 +50,7 @@ export const state = {
   tokken: null,
   star: null,
   likedmovies: [],
+  likedstars: [],
 };
 
 export const store = new Vuex.Store({

@@ -1,8 +1,7 @@
 <template>
     <div class="container">
         <button class="btn btn-primary container" v-on:click="clicked">{{shown}}</button>
-        <!-- <button v-if="togle" v-on:click="like" type="button" class="container btn btn-primary">Like</button>
-        <button v-else v-on:click="dislike" type="button" class="btn btn-primary container">Dislike</button> -->
+        
     </div>
 </template>
 <script>
