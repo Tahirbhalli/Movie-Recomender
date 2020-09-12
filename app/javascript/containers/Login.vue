@@ -27,7 +27,8 @@ export default {
     console.error(err.data.data)
   })
   .then(res => {
-    this.$store.dispatch('CreateTokken',res.data.data.signinMutation)
+    if(res.data.data.signinMutation){
+    this.$store.dispatch('CreateTokken',res.data.data.signinMutation)}
      const body1= {
   query: `query{
     likedmovies(tokken: "${this.$store.state.tokken}") {
