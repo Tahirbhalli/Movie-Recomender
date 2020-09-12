@@ -27,6 +27,7 @@ export default {
     console.error(err.data.data)
   })
   .then(res => {
+    if(res.data.data.signinMutation){
     this.$store.dispatch('CreateTokken',res.data.data.signinMutation)
      const body1= {
   query: `query{
@@ -45,7 +46,7 @@ axios.post('/graphql',body1).catch(err=>console.error(err)).then(res => {
             })
 
 
-  })   
+        }})   
         }
         },
     data(){
