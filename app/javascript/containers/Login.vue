@@ -28,7 +28,7 @@ export default {
   })
   .then(res => {
     if(res.data.data.signinMutation){
-    this.$store.dispatch('CreateTokken',res.data.data.signinMutation)}
+    this.$store.dispatch('CreateTokken',res.data.data.signinMutation)
      const body1= {
   query: `query{
     likedmovies(tokken: "${this.$store.state.tokken}") {
@@ -46,7 +46,7 @@ axios.post('/graphql',body1).catch(err=>console.error(err)).then(res => {
             })
 
 
-  })   
+        }})   
         }
         },
     data(){
