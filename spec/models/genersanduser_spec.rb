@@ -13,7 +13,7 @@ RSpec.describe Genersanduser, type: :model do
     b = Movie.create(name: 'run away', director_id: 1)
     b.save
     Starandmovie.create(movie_id: 2, star_id: 1)
-    a = Star.find(1)
+    Star.find(1)
     expect(Starandmovie.where(star_id: 1).exists?).to eq(true)
   end
   it 'movie all star' do

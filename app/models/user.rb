@@ -5,9 +5,9 @@ class User < ApplicationRecord
                     format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true, length: { minimum: 8, maximum: 50 }
   has_many :liked_movies
-  has_many :movies, through: :liked_movies
+  has_many :movies, through: :liked_movies, dependent: :destroy
   has_many :genersandusers
   has_many :genersofmovies, through: :genersandusers, dependent: :destroy
   has_many :starandusers
-  has_many :stars, through: :starandusers
+  has_many :stars, through: :starandusers, dependent: :destroy
 end
