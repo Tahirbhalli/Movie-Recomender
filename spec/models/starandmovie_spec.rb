@@ -20,7 +20,7 @@ RSpec.describe Starandmovie, type: :model do
     b = Star.new(name: 'bumrah')
     b.save
     Starandmovie.create(movie_id: 1, star_id: 2)
-    a = Movie.find(1)
+    Movie.find(1)
     expect(Starandmovie.where(movie_id: 1).exists?).to eq(true)
   end
 end

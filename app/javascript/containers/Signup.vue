@@ -40,7 +40,9 @@ export default {
     console.error(err.data.data)
   })
   .then(res => {
+    if(res.data.data.createUser){
     this.$store.dispatch('CreateTokken',res.data.data.createUser)
+    }
   })        
         }
         },
